@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+      <h2 class="my-4">My Bookings</h2>
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Facility</th>
+                  <th>Date</th>
+                  <th>Status</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for booking in bookings %}
+                  <tr>
+                      <td>{{ booking.facility.name }}</td>
+                      <td>{{ booking.date }}</td>
+                      <td>
+                          {% if booking.status == "Pending" %}
+                              <span class="badge bg-warning">{{ booking.status }}</span>
+                          {% elif booking.status == "Confirmed" %}
+                              <span class="badge bg-success">{{ booking.status }}</span>
+                          {% else %}
+                              <span class="badge bg-danger">{{ booking.status }}</span>
+                          {% endif %}
+                      </td>
+                  </tr>
+              {% empty %}
+                  <tr>
+                      <td colspan="3" class="text-center">No bookings yet.</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      <a href="{% url 'facility_list' %}" class="btn btn-secondary">Back to Facility List</a>
+  </div>
+{% endblock %}

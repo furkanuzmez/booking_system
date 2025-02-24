@@ -1,0 +1,46 @@
+
+services:
+  django:
+    build:
+      context: .  # Use relative path instead of absolute Windows path
+      dockerfile: Dockerfile
+    container_name: django_app
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_HOST: ${DATABASE_GHOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_PORT: "${DATABASE_PORT}"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app  # Mount the entire Django project
+      - static_volume:/app/staticfiles  # Persist static files properly
+    networks:
+      - booking_network
+
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - booking_network
+
+networks:
+  booking_network:
+    name: booking_network
+
+volumes:
+  static_volume:
+  postgres_data:
+    name: booking_system_postgres_data

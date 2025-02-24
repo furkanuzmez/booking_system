@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container-fluid" style="min-height: calc(100vh - 86px); overflow-y: auto;">
+  <div class="row justify-content-center align-items-center" style="min-height: calc(100vh - 70px);">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-sm border-0 mb-5">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Login</h2>
+          {% if form.errors %}
+            <div class="alert alert-danger">
+              Invalid username or password. Please try again.
+            </div>
+          {% endif %}
+          <form method="post" class="form-inline justify-content-center">
+            {% csrf_token %}
+            <!-- Username Field -->
+            <div class="form-group mb-2 mr-2">
+              <label for="{{ form.username.id_for_label }}" class="sr-only">Username</label>
+              {{ form.username|add_class:"form-control" }}
+            </div>
+            <!-- Password Field -->
+            <div class="form-group mb-2 mr-2">
+              <label for="{{ form.password.id_for_label }}" class="sr-only">Password</label>
+              {{ form.password|add_class:"form-control" }}
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary mb-2">Login</button>
+          </form>
+          <p class="text-center mt-3">
+            Don't have an account? <a href="{% url 'register' %}">Register</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

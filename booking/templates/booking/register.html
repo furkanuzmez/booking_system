@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container-fluid" style="min-height: calc(100vh - 86px); overflow-y: auto;">
+  <div class="row justify-content-center align-items-center" style="min-height: calc(100vh - 70px);">
+    <div class="col-12 col-md-10 col-lg-8">
+      <div class="card shadow-sm border-0 mb-5">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Register</h2>
+          <form method="post" class="form-inline justify-content-center flex-wrap">
+            {% csrf_token %}
+            <!-- Username Field -->
+            <div class="form-group mb-2 mr-2">
+              <label for="{{ form.username.id_for_label }}" class="sr-only">Username</label>
+              {{ form.username|add_class:"form-control" }}
+            </div>
+            <!-- Email Field -->
+            <div class="form-group mb-2 mr-2">
+              <label for="{{ form.email.id_for_label }}" class="sr-only">Email</label>
+              {{ form.email|add_class:"form-control" }}
+            </div>
+            <!-- Password Field -->
+            <div class="form-group mb-2 mr-2">
+              <label for="{{ form.password1.id_for_label }}" class="sr-only">Password</label>
+              {{ form.password1|add_class:"form-control" }}
+            </div>
+            <!-- Confirm Password Field -->
+            <div class="form-group mb-2 mr-2">
+              <label for="{{ form.password2.id_for_label }}" class="sr-only">Confirm Password</label>
+              {{ form.password2|add_class:"form-control" }}
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary mb-2">Sign Up</button>
+          </form>
+          <p class="text-center mt-3">
+            Already have an account? <a href="{% url 'login' %}">Login</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

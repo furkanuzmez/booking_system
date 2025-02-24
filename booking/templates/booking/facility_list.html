@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  /* Container takes up full viewport height minus navbar height (86px) */
+  .facility-container {
+    min-height: calc(100vh - 86px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  /* Card styling for a more professional look */
+  .facility-card {
+    border-radius: 10px;
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+  .facility-card:hover {
+    transform: translateY(-5px);
+  }
+  .facility-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .card-title {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  .card-text {
+    color: #34495e;
+    margin-bottom: 0.75rem;
+  }
+  /* Button styling */
+  .btn-book {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  .btn-book:hover {
+    background-color: #2980b9;
+    color: #fff;
+  }
+  /* Icon styling */
+  .icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+    fill: #3498db;
+  }
+</style>
+
+<div class="container facility-container">
+  <h2 class="mb-5 text-center">Available Facilities</h2>
+  <div class="row">
+    {% for facility in facilities %}
+      <div class="col-md-4 mb-4">
+        <div class="card facility-card h-100">
+          {% if facility.image %}
+            <img src="{{ facility.image.url }}" alt="{{ facility.name }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ facility.name }}</h5>
+            <p class="card-text">
+              <!-- Inline SVG for location icon -->
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path d="M8 0a5 5 0 0 0-5 5c0 3.25 5 11 5 11s5-7.75 5-11a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+              </svg>
+              <strong>Location:</strong> {{ facility.location }}
+            </p>
+            <p class="card-text">
+              <!-- Inline SVG for capacity icon -->
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path d="M2 14s1-4 6-4 6 4 6 4v1H2v-1z"/>
+              </svg>
+              <strong>Capacity:</strong> {{ facility.capacity }}
+            </p>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <a href="{% url 'book_facility' facility.id %}" class="btn btn-book btn-block">Book Now</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

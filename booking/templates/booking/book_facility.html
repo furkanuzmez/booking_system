@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+      <h2 class="my-4">Book a Facility</h2>
+      <div class="card p-4">
+          <p class="lead">Booking for: <strong>{{ facility.name }}</strong></p>
+          <form method="post">
+              {% csrf_token %}
+              <div class="mb-3">
+                  <label for="id_date" class="form-label">Select Date</label>
+                  {{ form.date }}
+              </div>
+              <button type="submit" class="btn btn-success">Confirm Booking</button>
+              <a href="{% url 'facility_list' %}" class="btn btn-secondary">Back</a>
+          </form>
+      </div>
+  </div>
+
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          flatpickr(".datepicker", {
+              dateFormat: "Y-m-d",
+              minDate: "today"  // Prevent past dates from being selected
+          });
+      });
+  </script>
+{% endblock %}
