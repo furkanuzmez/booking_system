@@ -1,0 +1,23 @@
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Django secrets
+.env
+*.sqlite3
+
+# Ignore IDE & Editor Configs
+.vscode/
+.idea/
+*.swp
+
+# Ignore Logs & Temp Files
+*.log
+*.tmp
+
+# Ignore Static & Media Files (If Managed Elsewhere)
+staticfiles/
+media/
+
+
