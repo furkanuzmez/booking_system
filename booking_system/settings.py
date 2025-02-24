@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'booking_system.wsgi.application'
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'booking_system_db',  # Change this to your PostgreSQL database name
 #         'USER': 'postgres',  # Change to your PostgreSQL username
-#         'PASSWORD': '2648',  # Change to your PostgreSQL password
+#         'PASSWORD': '1326',  # Change to your PostgreSQL password
 #         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
@@ -104,7 +104,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DATABASE_NAME', 'booking_system_db'),
         'USER': os.getenv('DATABASE_USER', 'postgres'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', '2648'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', '1326'),
         'HOST': os.getenv('DATABASE_HOST', 'localhost'),  # Use 'postgres' inside Docker
         'PORT': os.getenv('DATABASE_PORT', '5432'),
     }
