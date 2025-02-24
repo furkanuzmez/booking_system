@@ -1,12 +1,12 @@
 # 🏨 Facility - Restaurant Booking System
 
-A **Django + PostgreSQL + Docker** based **Facility Booking System** where users can book conference restaurent and facilities.
+A **Django + PostgreSQL + Docker** based **Facility - Restaurant Booking System** where users can book conference restaurant and facilities.
 
 ---
 
 ## 🚀 Features
 ✅ **User Authentication** (Register/Login/Logout)  
-✅ **Book Facilities** (Conference Rooms, Halls)  
+✅ **Book Facilities** (Restaurant etc.)  
 ✅ **Admin Panel** (Approve & Manage Bookings)  
 ✅ **PostgreSQL Database**  
 ✅ **Docker Support** (Easy Setup)  
@@ -81,6 +81,20 @@ Follow the prompts to set up an **admin username & password**.
 
 ---
 
+
+
+## 🛠 Running Unit Tests
+Run tests inside Docker:
+```sh
+docker-compose exec django python manage.py test booking
+```
+Or without Docker:
+```sh
+python manage.py test booking
+```
+
+---
+
 ## ⚡ **Run Manually Without Docker**
 
 ### **1️⃣ Create a Virtual Environment**
@@ -123,38 +137,6 @@ python manage.py test booking
 
 ---
 
-## 🎯 **Project Structure**
-```
-booking_system/
-│── booking/                      # Django App (Bookings Management)
-│   ├── migrations/                # Database Migrations
-│   ├── templates/                 # HTML Templates
-│   ├── tests/                     # ✅ Unit Tests
-│   │   ├── __init__.py
-│   │   ├── test_models.py
-│   │   ├── test_views.py
-│   │   ├── test_forms.py
-│   ├── models.py                  # Database Models
-│   ├── urls.py                     # App URLs
-│   ├── views.py                    # App Views
-│   ├── forms.py                    # Django Forms
-│
-│── booking_system/                 # Django Project Config
-│   ├── settings.py                  # Django Settings
-│   ├── urls.py                       # Project URLs
-│
-│── static/                         # Static Files (CSS, JS, Images)
-│── media/                          # Uploaded Media Files
-│── .env.example                    # ✅ Example Env File (Do Not Commit .env)
-│── requirements.txt                 # Python Dependencies
-│── manage.py                        # Django Management Script
-│── Dockerfile                       # Dockerfile for Django App
-│── docker-compose.yml                # Docker Compose Config
-│── .gitignore                        # Ignore Unnecessary Files
-│── README.md                         # Project Documentation
-```
-
----
 
 ## 🔧 **Troubleshooting**
 
