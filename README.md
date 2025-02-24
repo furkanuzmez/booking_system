@@ -4,6 +4,16 @@ A **Django + PostgreSQL + Docker** based **Facility - Restaurant Booking System*
 
 ---
 
+## 📸 Screenshots
+
+### 🖼️ Main Page
+![Main Page](ssmain.jpg)
+
+### 📅 Booking Page
+![Booking Page](ssBookings.jpg)
+
+
+
 ## 🚀 Features
 ✅ **User Authentication** (Register/Login/Logout)  
 ✅ **Book Facilities** (Restaurant etc.)  
